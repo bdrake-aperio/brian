@@ -1,0 +1,19 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: brian-echo
+  namespace: argocd
+  labels:
+    argocd.argoproj.io/app-type: app-of-apps
+spec:
+  project: default
+  source:
+    repoURL: 'https://github.com/bdrake-aperio/brian.git'
+    path: argofun/echo/helm
+    targetRevision: main
+  destination:
+    namespace: brian
+    name: 'arn:aws:eks:us-west-2:731498386036:cluster/Dev'
+  syncPolicy:
+    automated:
+      prune: true
