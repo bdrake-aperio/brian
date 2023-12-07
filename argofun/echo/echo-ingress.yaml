@@ -2,7 +2,7 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: echo-kong-ingress
+  name: echo-foo
   annotations:
     konghq.com/strip-path: "false"
 spec:
@@ -14,14 +14,14 @@ spec:
         pathType: ImplementationSpecific
         backend:
           service:
-            name: echo-service
+            name: echo
             port:
               number: 80
 ---
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: echo-kong-ingress-jwt
+  name: echo-bar
   annotations:
     konghq.com/strip-path: "false"
 spec:
@@ -33,6 +33,6 @@ spec:
         pathType: ImplementationSpecific
         backend:
           service:
-            name: echo-service
+            name: echo
             port:
               number: 80
