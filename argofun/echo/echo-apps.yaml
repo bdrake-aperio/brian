@@ -9,11 +9,10 @@ spec:
   project: default
   source:
     repoURL: 'https://github.com/bdrake-aperio/brian.git'
+    targetRevision: HEAD
     path: argofun/echo/helm
-    targetRevision: main
+    helm:
+      releaseName: echo-release
   destination:
     namespace: brian
     name: 'arn:aws:eks:us-west-2:731498386036:cluster/Dev'
-  syncPolicy:
-    automated:
-      prune: true
